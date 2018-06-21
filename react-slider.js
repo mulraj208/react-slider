@@ -172,7 +172,9 @@
        *  Callback called when the the slider is clicked (handle or bars).
        *  Receives the value at the clicked position as argument.
        */
-      onSliderClick: PropTypes.func
+      onSliderClick: PropTypes.func,
+
+      isResize: PropTypes.bool,
     },
 
     getDefaultProps: function () {
@@ -235,7 +237,7 @@
 
       // If an upperBound has not yet been determined (due to the component being hidden
       // during the mount event, or during the last resize), then calculate it now
-      if (this.state.upperBound === 0) {
+      if (this.state.upperBound === 0 || (this.props.isResize !== newProps.isResize)) {
         this._resize();
       }
     },
